@@ -1,10 +1,7 @@
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
@@ -99,9 +96,17 @@ public class PButtons extends JPanel
 		btnClear.setBackground(Color.white);
 		btnClear.setText("Clear");
 		btnClear.setBorder(BorderFactory.createLoweredBevelBorder());
-		 btnClear.setActionCommand("clear");
-		 btnClear.addActionListener(cmd);
+		btnClear.setActionCommand("clear");
+		btnClear.addActionListener(cmd);
 		add(btnClear);
 
+		JButton btnSave = new JButton("Save");
+		btnSave.setBounds(10, 260, 80, 40);
+		btnSave.addActionListener(cmd.save);
+		add(btnSave);
+
+		JButton btnLoad = new JButton("Load");
+		btnLoad.setBounds(10, 310, 80, 40);
+		add(btnLoad);
 	}
 }

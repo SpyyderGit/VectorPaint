@@ -23,7 +23,11 @@ public class PMenu extends JPanel
 		ImageIcon iconAbout = new ImageIcon("D:\\GoogleShared\\shared\\mcpphw\\src\\Paint\\img\\about.png");
 
 		JMenuItem itmOpen = new JMenuItem("Open", iconOpen);
+		itmOpen.addActionListener(cmd.load);
+		
 		JMenuItem itmSave = new JMenuItem("Save", icon);
+		itmSave.addActionListener(cmd.save);
+		
 		JMenuItem itmExit = new JMenuItem("Exit", iconExit);
 		itmExit.setActionCommand("exit");
 		itmExit.addActionListener(cmd);
@@ -34,7 +38,12 @@ public class PMenu extends JPanel
 
 		JMenu options = new JMenu("Options");
 
-		JMenuItem w = new JMenuItem("Width");
+		JMenuItem w = new JMenuItem("Width reset");
+		w.addActionListener(cmd.aStr);
+		w.setActionCommand("reset");
+		
+		
+		
 		JMenuItem c = new JMenuItem("Color");
 		c.setActionCommand("chooser");
 		c.addActionListener(cmd);

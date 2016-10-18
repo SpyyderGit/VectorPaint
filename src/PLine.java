@@ -1,5 +1,8 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.Stroke;
 
 import javax.swing.JPanel;
 
@@ -12,7 +15,7 @@ public class PLine extends JPanel
 	Color color = null;
 	int width = 1;
 
-	public PLine(int x1, int y1, int x2, int y2, Color color, int width)
+	public PLine(int x1, int y1, int x2, int y2, int width,Color color)
 	{
 		this.x1 = x1;
 		this.y1 = y1;
@@ -26,5 +29,6 @@ public class PLine extends JPanel
 	{
 		gg.drawLine(x1, y1, x2, y2);
 		gg.setColor(color);
+		gg.setStroke(new BasicStroke(width));
 	}
 }

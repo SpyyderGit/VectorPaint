@@ -19,9 +19,19 @@ public class PToolBar extends JPanel
 		jtb.setLayout(null);
 		jtb.setBounds(0, 10, 1000, 40);
 
-		JButton btnW = new JButton("Width");
-		btnW.setBounds(120, 0, 70, 30);
-		jtb.add(btnW);
+		JButton btnWp = new JButton("+");
+		btnWp.setBounds(120, 0, 30, 30);
+		btnWp.setActionCommand("plus");
+		btnWp.addActionListener(cmd.aStr);
+
+		jtb.add(btnWp);
+
+		JButton btnWm = new JButton("-");
+		btnWm.setBounds(150, 0, 30, 30);
+		btnWm.addActionListener(cmd.aStr);
+		btnWm.setActionCommand("minus");
+
+		jtb.add(btnWm);
 
 		JButton btnColor = new JButton("Colors");
 		btnColor.setBounds(190, 0, 70, 30);
