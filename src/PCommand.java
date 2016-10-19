@@ -16,11 +16,13 @@ import java.util.ArrayList;
 
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PCommand implements ActionListener
 {
+
 	public PData data = new PData();
 	public ActionStroke aStr = new ActionStroke();
 	public Save save = new Save();
@@ -28,42 +30,45 @@ public class PCommand implements ActionListener
 
 	ArrayList<PLine> pp = new ArrayList<PLine>();
 
+	JLabel lbl = new JLabel("Current size of line: 1 px");
+	
+
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		String getCmd = e.getActionCommand();
 
-		switch (getCmd)
-		{
+		switch (getCmd) {
 		case "black":
-			data.color = Color.BLACK;
+			data.color = Color.BLACK.getRGB();
+			
 			break;
 		case "red":
-			data.color = Color.red;
+			data.color = Color.red.getRGB();
+						
 			break;
 		case "green":
-			data.color = Color.green;
+			data.color = Color.green.getRGB();
 			break;
 		case "yellow":
-			data.color = Color.yellow;
+			data.color = Color.yellow.getRGB();
 			break;
 		case "blue":
-			data.color = Color.blue;
+			data.color = Color.blue.getRGB();
 			break;
 		case "orange":
-			data.color = Color.ORANGE;
+			data.color = Color.ORANGE.getRGB();
 			break;
 
 		case "cyan":
-			data.color = Color.CYAN;
+			data.color = Color.CYAN.getRGB();
 			break;
 		case "magenta":
-			data.color = Color.MAGENTA;
+			data.color = Color.MAGENTA.getRGB();
 
 			break;
 		case "lastik":
-			data.color = Color.white;
-			data.w = 50;
+			data.color = Color.white.getRGB();
 			break;
 
 		case "width":
@@ -71,11 +76,11 @@ public class PCommand implements ActionListener
 			break;
 
 		case "clear":
-			data.color = Color.white;
+			data.color = Color.white.getRGB();
 			break;
 
 		case "chooser":
-			data.color = JColorChooser.showDialog(null, "color", Color.BLACK);
+			data.color = JColorChooser.showDialog(null, "color", Color.black).getRGB();
 			break;
 		case "exit":
 			System.exit(0);
@@ -96,6 +101,7 @@ public class PCommand implements ActionListener
 			int ret = fc.showDialog(null, "Сохранить файл в: ");
 			if (ret == JFileChooser.APPROVE_OPTION)
 			{
+
 				f = fc.getSelectedFile();
 			}
 
@@ -121,9 +127,7 @@ public class PCommand implements ActionListener
 			{
 				e.printStackTrace();
 			}
-
 		}
-
 	}
 
 	class Load implements ActionListener
@@ -137,6 +141,7 @@ public class PCommand implements ActionListener
 		int x22 = 0;
 		int y22 = 0;
 		int w = 0;
+		int c = 0;
 
 		@Override
 		public void actionPerformed(ActionEvent arg0)
@@ -170,8 +175,9 @@ public class PCommand implements ActionListener
 						x22 = Integer.parseInt(s[i].substring((s[i].indexOf("x2:") + 3), s[i].indexOf("y2") - 1));
 						y22 = Integer.parseInt(s[i].substring((s[i].indexOf("y2:") + 3), s[i].indexOf("w") - 1));
 						w = Integer.parseInt(s[i].substring((s[i].indexOf("w:") + 2), s[i].indexOf("c") - 1));
+						c = Integer.parseInt(s[i].substring((s[i].indexOf("c:") + 2)));
 
-						pp.add(new PLine(x11, y11, x22, y22, w, data.color));
+						pp.add(new PLine(x11, y11, x22, y22, w, c));
 					}
 				}
 			}
@@ -188,24 +194,25 @@ public class PCommand implements ActionListener
 
 	class ActionStroke implements ActionListener
 	{
-		int i = 0;
+		public int i = data.w;
 
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
 			String str = e.getActionCommand();
 
-			switch (str)
-			{
+			switch (str) {
 			case "plus":
 				i++;
 				data.w = i;
+				lbl.setText("Current size of line: " + i + " px");
 				break;
 			case "minus":
-				if (i > 0)
+				if (i > 1)
 				{
 					i--;
 					data.w = i;
+					lbl.setText("Current size of line: " + i + " px");
 				}
 				else
 				{
@@ -213,11 +220,11 @@ public class PCommand implements ActionListener
 				}
 				break;
 			case "reset":
-				data.w = 1;
+				i = 1;
+				data.w = i;
+				lbl.setText("Current size of line: " + i + " px");
 				break;
 			}
 		}
-
 	}
-
 }

@@ -18,8 +18,8 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 	{
 		this.cmd = cmd;
 		setLayout(null);
-		setBounds(120, 100, 800, 600);
-		setBackground(Color.white);
+		
+		
 		addMouseListener(this);
 		addMouseMotionListener(this);
 
@@ -42,31 +42,26 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 		cmd.pp.add(new PLine(x, y, e.getX(), e.getY(), cmd.data.w, cmd.data.color));
 		x = e.getX();
 		y = e.getY();
-		
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e)
 	{
-
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e)
 	{
-
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e)
 	{
-
 	}
 
 	@Override
@@ -79,6 +74,5 @@ public class PPanel extends JPanel implements MouseListener, MouseMotionListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-
 	}
 }

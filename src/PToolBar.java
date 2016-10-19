@@ -1,6 +1,8 @@
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
@@ -11,19 +13,19 @@ public class PToolBar extends JPanel
 	public PToolBar(PCommand cmd)
 	{
 		this.cmd = cmd;
-
 		setLayout(null);
 
-		setBounds(0, 30, 1000, 40);
 		JToolBar jtb = new JToolBar();
 		jtb.setLayout(null);
 		jtb.setBounds(0, 10, 1000, 40);
+
+		cmd.lbl.setBounds(640, 0, 150, 30);
+		jtb.add(cmd.lbl);
 
 		JButton btnWp = new JButton("+");
 		btnWp.setBounds(120, 0, 30, 30);
 		btnWp.setActionCommand("plus");
 		btnWp.addActionListener(cmd.aStr);
-
 		jtb.add(btnWp);
 
 		JButton btnWm = new JButton("-");

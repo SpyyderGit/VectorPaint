@@ -14,8 +14,6 @@ public class PButtons extends JPanel
 	{
 		this.cmd = cmd;
 		setLayout(null);
-		setBounds(10, 100, 100, 400);
-		setBackground(Color.lightGray);
 		setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 
 		JButton btnRed = new JButton();
@@ -107,6 +105,7 @@ public class PButtons extends JPanel
 
 		JButton btnLoad = new JButton("Load");
 		btnLoad.setBounds(10, 310, 80, 40);
+		btnLoad.addActionListener(cmd.load);
 		add(btnLoad);
 	}
 }

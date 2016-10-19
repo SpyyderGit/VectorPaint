@@ -13,7 +13,6 @@ public class PMenu extends JPanel
 		this.cmd = cmd;
 		setLayout(null);
 
-		setBounds(0, 0, 1000, 30);
 		JMenuBar jmb = new JMenuBar();
 		jmb.setBounds(0, 0, 1000, 30);
 		JMenu jmFile = new JMenu("File");
